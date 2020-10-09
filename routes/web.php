@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +11,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return Inertia\Inertia::render('About');
+})->name('about');
+
+Route::get('/projects', function () {
+    return Inertia\Inertia::render('Projects');
+})->name('projects');
+
+Route::get('/resume', function () {
+    return Inertia\Inertia::render('Resume');
+})->name('resume');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
