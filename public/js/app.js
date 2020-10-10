@@ -3539,6 +3539,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -26146,7 +26229,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "h-64 bg-gray-900 text-gray-300" }, [
-      _c("div", { staticClass: "flex flex-col" }, [
+      _c("div", { staticClass: "flex flex-col container p-4 md:p-8 lg:p-16" }, [
         _c("div", [
           _vm._v("\n                Contact Information\n            ")
         ]),
@@ -26877,7 +26960,302 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("guest-layout", [_c("div", [_vm._v("\n        about\n    ")])])
+  return _c("guest-layout", [
+    _c("div", { staticClass: "bg-white py-10 sm:py-12 lg:py-16" }, [
+      _c("div", { staticClass: "py-12 bg-white" }, [
+        _c(
+          "div",
+          { staticClass: "max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8" },
+          [
+            _c("div", { staticClass: "lg:text-center" }, [
+              _c(
+                "h3",
+                {
+                  staticClass:
+                    "mt-2 max-w-3xl text-2xl leading-8 font-semibold font-display text-gray-900 sm:text-3xl sm:leading-9 lg:max-w-4xl lg:text-4xl lg:leading-10 lg:mx-auto lg:text-center"
+                },
+                [_vm._v("\n                    I'm Andrew,\n                ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass:
+                    "text-base leading-6 font-semibold text-teal-500 uppercase tracking-wide lg:text-center"
+                },
+                [
+                  _vm._v(
+                    "\n                    an enterprise software developer.\n                "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-10" }, [
+              _c(
+                "ul",
+                {
+                  staticClass: "md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10"
+                },
+                [
+                  _c("li", [
+                    _c("div", { staticClass: "flex" }, [
+                      _c("div", { staticClass: "flex-shrink-0" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d:
+                                      "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-4" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass:
+                              "text-lg leading-6 font-medium text-gray-900"
+                          },
+                          [_vm._v("Business Focused")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mt-2 text-base leading-6 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        I have years of experience working with business partners and project stakeholders. I can talk business with the clients without technical lingo.\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "mt-10 md:mt-0" }, [
+                    _c("div", { staticClass: "flex" }, [
+                      _c("div", { staticClass: "flex-shrink-0" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d:
+                                      "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-4" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass:
+                              "text-lg leading-6 font-medium text-gray-900"
+                          },
+                          [_vm._v("Delightful Front End")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mt-2 text-base leading-6 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        It's my goal to make applications that are a pleasure to use. The face of my applications represents their internal workings.\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "mt-10 md:mt-0" }, [
+                    _c("div", { staticClass: "flex" }, [
+                      _c("div", { staticClass: "flex-shrink-0" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-4" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass:
+                              "text-lg leading-6 font-medium text-gray-900"
+                          },
+                          [_vm._v("Clean Back End")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mt-2 text-base leading-6 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        I pride myself on having clean and maintainable source code. It's nice to come back to a tidy codebase when a change is needed months after initial development.\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "mt-10 md:mt-0" }, [
+                    _c("div", { staticClass: "flex" }, [
+                      _c("div", { staticClass: "flex-shrink-0" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "h-6 w-6",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  fill: "none",
+                                  viewBox: "0 0 24 24",
+                                  stroke: "currentColor"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d:
+                                      "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-4" }, [
+                        _c(
+                          "h4",
+                          {
+                            staticClass:
+                              "text-lg leading-6 font-medium text-gray-900"
+                          },
+                          [_vm._v("Server Ready")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "mt-2 text-base leading-6 text-gray-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        I can get hands on with the servers. I have provisioned and maintained production servers and docker development environments.\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
