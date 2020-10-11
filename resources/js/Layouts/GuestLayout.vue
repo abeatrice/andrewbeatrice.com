@@ -61,7 +61,7 @@
 
         <!-- Footer -->
         <div class="h-64 bg-gray-900 text-gray-300">
-            <div class="flex flex-col container p-4 md:p-8 lg:p-16">
+            <div class="flex flex-col p-4 md:p-8 lg:p-16">
                 <div>
                     Contact Information
                 </div>
