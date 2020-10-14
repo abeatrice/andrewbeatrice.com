@@ -2639,7 +2639,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['href', 'active'],
   computed: {
     classes: function classes() {
-      return this.active ? 'inline-flex items-center px-1 pt-1 border-b-4 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out';
+      return this.active ? 'inline-flex items-center px-1 pt-1 text-sm font-semibold leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition duration-150 ease-in-out';
     }
   }
 });
@@ -3531,6 +3531,70 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_GuestLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/GuestLayout */ "./resources/js/Layouts/GuestLayout.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -26144,7 +26208,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-col h-screen justify-between" }, [
-    _c("nav", { staticClass: "bg-white border-b border-gray-100" }, [
+    _c("nav", { staticClass: "bg-white border-b-2 border-red-500" }, [
       _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
         _c("div", { staticClass: "flex justify-between h-16" }, [
           _c("div", { staticClass: "flex" }, [
@@ -26339,19 +26403,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "h-64 bg-gray-900 text-gray-300" }, [
+    return _c("div", { staticClass: "bg-gray-900 text-gray-300" }, [
       _c("div", { staticClass: "flex flex-col p-4 md:p-8 lg:p-16" }, [
-        _c("div", [
+        _c("div", { staticClass: "flex-1" }, [
           _vm._v("\n                Contact Information\n            ")
         ]),
         _vm._v(" "),
-        _c("div", [
+        _c("div", { staticClass: "flex-1" }, [
           _vm._v(
             "\n                Here are some ways to get into contact with me. Let me know if you'd like to talk about your next project.\n            "
           )
         ]),
         _vm._v(" "),
-        _c("div", [
+        _c("div", { staticClass: "flex-1" }, [
           _vm._v(
             "\n                This site was built with Vue.js, Laravel, and Tailwind css.\n            "
           )
@@ -27072,7 +27136,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("guest-layout", [
-    _c("div", { staticClass: "bg-white" }, [
+    _c("div", { staticClass: "bg-gray-100" }, [
       _c("div", { staticClass: "py-8 md:py-12 lg:py-24" }, [
         _c(
           "div",
@@ -27084,7 +27148,11 @@ var render = function() {
                 staticClass:
                   "max-w-3xl text-2xl leading-8 font-semibold font-display text-gray-900 sm:text-3xl sm:leading-9 lg:max-w-4xl lg:text-4xl lg:leading-10 lg:mx-auto lg:text-center"
               },
-              [_vm._v("\n                    I'm Andrew,\n                ")]
+              [
+                _vm._v(
+                  "\n                    Andrew Beatrice\n                "
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -27095,7 +27163,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    an enterprise software developer.\n                "
+                  "\n                    Enterprise Software Developer\n                "
                 )
               ]
             ),
@@ -27389,7 +27457,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                    I'm familiar with:\n                "
+                    "\n                    I'm familiar with\n                "
                   )
                 ]
               ),
@@ -27880,7 +27948,276 @@ var render = function() {
             ]
           )
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-8 md:py-12 lg:py-24" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 font-semibold"
+          },
+          [
+            _c(
+              "h3",
+              {
+                staticClass:
+                  "max-w-3xl text-2xl leading-8 font-display text-gray-900 sm:text-3xl sm:leading-9 lg:max-w-4xl lg:text-4xl lg:leading-10 lg:mx-auto lg:text-center"
+              },
+              [_vm._v("\n                    Testimonials\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              {
+                staticClass:
+                  "text-base leading-6 text-teal-500 uppercase tracking-wide lg:text-center"
+              },
+              [
+                _vm._v(
+                  "\n                    What Others Have to Say\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "relative text-lg md:text-xl lg:text-2xl" },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "relative z-10" }, [
+                      _vm._v(
+                        "Andrew continues to prove himself to be a top tier developer within our team. He spent a fair amount of time this past year working on developing the systems we use to do message processing with our new point of sale application. He has done an excellent job expanding his knowledge and skills into new areas of application development. Andrew continues to be one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. Andrew is well acquainted with our common tools for development and has become acquainted with new tools needed to design and build the framework for our new POS message processes. Andrew is an excellent communicator and works easily within the members of our team and the other teams that we work closely with. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP. His knowledge and expertise in PHP helped to establish our POS communications framework and he has been able to assist other developers as they begin to learn PHP within the websmart and non-websmart IDES."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Lamps Plus, Inc.\n                        "
+                    ),
+                    _c("span", { staticClass: "font-black text-red-500" }, [
+                      _vm._v("/")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Performance Evaluation 2019")
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "relative text-lg md:text-xl lg:text-2xl" },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "relative z-10" }, [
+                      _vm._v(
+                        "Over the past year, Andrew has continued to perform at a high level and make himself an important member of our group. He has quickly become one of our go to developers. He continues to surpass my expectations of him in the work he does. His knowledge of our systems continues to grow and he is expanding his understanding of other development languages and frameworks. Andrew is a self-starter who is able to get through tasks without much input and come up with innovative solutions to user and system problems. He is becoming well acquainted with the tools we commonly use along with newer tools related to our POS project. He does a fine job of communicating with his fellow programmers and uses them for advice and as sounding boards for his ideas when necessary. Andrew also works well with the users that we interact with most often and has established a good repore with the overall user community. He is able to effectively take their requests and modify/create programs that reflect those expectations with little difficulty. Andrew has become proficient in RPGIV, CL, PML and PHP. His knowledge and expertise in PHP is helping us to create a message handling framework for the POS system. Based on his exemplary performance, Andrew was promoted from IBM i Programmer to IBM i Programmer/Analyst I back in February of this year."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Lamps Plus, Inc.\n                        "
+                    ),
+                    _c("span", { staticClass: "font-black text-red-500" }, [
+                      _vm._v("/")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Performance Evaluation 2018")
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "relative text-lg md:text-xl lg:text-2xl" },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "relative z-10" }, [
+                      _vm._v(
+                        "Andrew has become a very important member of our team over his first year at Lamps Plus. He continues to surpass my expectations of him in the work he does. He is a motivate self-starter who is able to produce quality work in a reasonable amount of time. He is becoming well aquainted with most of the tools we use and is becoming more and more able to complete tasks with minimal input from other developers. He does a fine job of communicating with his fellow programmers and uses them for advice and as sounding boards for his ideas when necessary. Andrew also works well with the users that we interact with most often. He is able to effectively take their requests and modify/create programs that reflect those expectations with little difficulty. Andrew has become proficient in RPG IV, CL, PML, and has recently done a lot of work in PHP."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Lamps Plus, Inc.\n                        "
+                    ),
+                    _c("span", { staticClass: "font-black text-red-500" }, [
+                      _vm._v("/")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Performance Evaluation 2017")
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "relative text-lg md:text-xl lg:text-2xl" },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "relative z-10" }, [
+                      _vm._v(
+                        "Andrew is an excellent employee and has far surpassed my expectations of him coming into our group as a Junior Programmer. He is a motivated, self-starter who is able to produce quality work in a reasonable amount of time. He is becoming well aquainted with most of the tools we use and is able to complete tasks with minimal handholdng. He has incorporated himself well with our team and has become a valuable member of our group in short order."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                      },
+                      [_vm._v('"')]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Lamps Plus, Inc.\n                        "
+                    ),
+                    _c("span", { staticClass: "font-black text-red-500" }, [
+                      _vm._v("/")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Performance Evaluation 2016")
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
     ])
   ])
 }

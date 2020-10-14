@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen justify-between">
-        <nav class="bg-white border-b border-gray-100">
+        <nav class="bg-white border-b-2 border-red-500">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
@@ -60,15 +60,15 @@
         </main>
 
         <!-- Footer -->
-        <div class="h-64 bg-gray-900 text-gray-300">
+        <div class="bg-gray-900 text-gray-300">
             <div class="flex flex-col p-4 md:p-8 lg:p-16">
-                <div>
+                <div class="flex-1">
                     Contact Information
                 </div>
-                <div>
+                <div class="flex-1">
                     Here are some ways to get into contact with me. Let me know if you'd like to talk about your next project.
                 </div>
-                <div>
+                <div class="flex-1">
                     This site was built with Vue.js, Laravel, and Tailwind css.
                 </div>
             </div>
