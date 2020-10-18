@@ -17,9 +17,6 @@
                             <jet-nav-link :href="route('about')" :active="$page.currentRouteName == 'about'">
                                 About
                             </jet-nav-link>
-                            <jet-nav-link :href="route('projects')" :active="$page.currentRouteName == 'projects'">
-                                Projects
-                            </jet-nav-link>
                             <jet-nav-link :href="route('resume')" :active="$page.currentRouteName == 'resume'">
                                 Resume
                             </jet-nav-link>
@@ -43,9 +40,6 @@
                 <div class="pt-2 pb-3 space-y-1">
                     <jet-responsive-nav-link :href="route('about')" :active="$page.currentRouteName == 'about'">
                         About
-                    </jet-responsive-nav-link>
-                    <jet-responsive-nav-link :href="route('projects')" :active="$page.currentRouteName == 'projects'">
-                        Projects
                     </jet-responsive-nav-link>
                     <jet-responsive-nav-link :href="route('resume')" :active="$page.currentRouteName == 'resume'">
                         Resume
