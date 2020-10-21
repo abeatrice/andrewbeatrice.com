@@ -25,7 +25,7 @@
                             <ul class="mt-1 ml-8 text-gray-500 list-disc text-sm md:text-base">
                                 <li>Created QA environments with docker and bash scripts to facilitate quality assurance testing.</li>
                                 <li>Added role based access control to primary web application letting management have granular control over read, write, and update access to specific resources.</li>
-                                <li>Modernized legacy application with the addition of PSR-4 autoloading and a verity of packagist libraries to expedite development.</li>
+                                <li>Modernized legacy application with the addition of PSR-4 autoloading and a variety of packagist libraries to expedite development.</li>
                                 <li>Created and facilitated developer training on subjects: Git, Docker, Laravel packages, Redis, and more.</li>
                             </ul>
                         </div>
