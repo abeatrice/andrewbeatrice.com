@@ -210,7 +210,21 @@
                             <div class="mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center">
                                 <div class="relative text-lg md:text-xl lg:text-2xl">
                                     <span class="absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300">"</span>
-                                    <span class="relative z-10">Andrew continues to prove himself to be a top tier developer within our team. Andrew continues to be one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP.</span>
+                                    <span class="relative z-10">I appreciate all the work that went into this solution. Everything you have brought to our application has been leaps and bounds ahead of where it would have been otherwise. The parts of Laravel that we now use cut application development time significantly. You've done wonderfully.</span>
+                                    <span class="absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300">"</span>
+                                </div>
+                                <div class="mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl">
+                                    Consumer Attorney Marketing Group
+                                    <span class="font-black text-red-500">/</span>
+                                    <span class="text-gray-500">Tech Lead 2020</span>
+                                </div>
+                            </div>
+                        </slide>
+                        <slide class="self-center">
+                            <div class="mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center">
+                                <div class="relative text-lg md:text-xl lg:text-2xl">
+                                    <span class="absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300">"</span>
+                                    <span class="relative z-10">Andrew continues to prove himself to be a top tier developer within our team and one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP.</span>
                                     <span class="absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300">"</span>
                                 </div>
                                 <div class="mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl">

@@ -3862,6 +3862,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -28546,7 +28560,72 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", { staticClass: "relative z-10" }, [
                             _vm._v(
-                              "Andrew continues to prove himself to be a top tier developer within our team. Andrew continues to be one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP."
+                              "I appreciate all the work that went into this solution. Everything you have brought to our application has been leaps and bounds ahead of where it would have been otherwise. The parts of Laravel that we now use cut application development time significantly. You've done wonderfully."
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                            },
+                            [_vm._v('"')]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Consumer Attorney Marketing Group\n                                "
+                          ),
+                          _c(
+                            "span",
+                            { staticClass: "font-black text-red-500" },
+                            [_vm._v("/")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text-gray-500" }, [
+                            _vm._v("Tech Lead 2020")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "self-center" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "relative text-lg md:text-xl lg:text-2xl"
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
+                            },
+                            [_vm._v('"')]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "relative z-10" }, [
+                            _vm._v(
+                              "Andrew continues to prove himself to be a top tier developer within our team and one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP."
                             )
                           ]),
                           _vm._v(" "),
@@ -45686,8 +45765,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/abeatrice/andrewbeatrice.com/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/abeatrice/andrewbeatrice.com/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
