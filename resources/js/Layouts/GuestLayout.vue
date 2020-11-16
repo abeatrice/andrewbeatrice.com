@@ -1,21 +1,25 @@
 <template>
     <div class="flex flex-col h-screen justify-between">
-        <nav class="bg-white border-b-2 border-red-500">
+        <nav class="fixed w-full z-10 top-0 bg-white border-b-2 border-red-500">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
-                    <div class="flex">
+                    <div class="w-full flex justify-between">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <inertia-link :href="route('about')">
                                 <jet-application-mark class="block h-9 w-auto" />
                             </inertia-link>
+                            <span class="ml-2 text-2xl font-semibold tracking-wide">Andrew Beatrice</span>
                         </div>
 
                         <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <div class="hidden sm:flex space-x-8 sm:-my-px sm:ml-10">
                             <jet-nav-link :href="route('about')" :active="$page.currentRouteName == 'about'">
                                 About
+                            </jet-nav-link>
+                            <jet-nav-link :href="route('projects')" :active="$page.currentRouteName == 'projects'">
+                                Projects
                             </jet-nav-link>
                             <jet-nav-link :href="route('resume')" :active="$page.currentRouteName == 'resume'">
                                 Resume
@@ -41,6 +45,9 @@
                     <jet-responsive-nav-link :href="route('about')" :active="$page.currentRouteName == 'about'">
                         About
                     </jet-responsive-nav-link>
+                    <jet-responsive-nav-link :href="route('projects')" :active="$page.currentRouteName == 'projects'">
+                        Projects
+                    </jet-responsive-nav-link>
                     <jet-responsive-nav-link :href="route('resume')" :active="$page.currentRouteName == 'resume'">
                         Resume
                     </jet-responsive-nav-link>
@@ -49,7 +56,7 @@
         </nav>
 
         <!-- Page Content -->
-        <main class="mb-auto">
+        <main class="mb-auto mt-16">
             <slot></slot>
         </main>
 
