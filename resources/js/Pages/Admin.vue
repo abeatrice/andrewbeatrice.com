@@ -1,6 +1,8 @@
 <template>
     <app-layout>
-        hello world
+        <inertia-link :href="route('testimonials.index')" class="text-gray-500">
+            Testimonials
+        </inertia-link>
     </app-layout>
 </template>
 

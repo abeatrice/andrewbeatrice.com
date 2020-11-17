@@ -15,6 +15,10 @@ class CreateTestimonialsTable extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('content', 1024);
+            $table->string('provider');
+            $table->string('subprovider');
+            $table->smallInteger('year');
             $table->timestamps();
         });
     }

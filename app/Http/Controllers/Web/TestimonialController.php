@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
 
 class TestimonialController extends Controller
 {
@@ -15,7 +16,9 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Resources/Testimonials');
+        $testimonials = Testimonial::orderBy('year', 'desc')->get();
+
+        return Inertia::render('Resources/Testimonials', ['testimonials' => $testimonials]);
     }
 
     /**
