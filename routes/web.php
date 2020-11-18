@@ -1,30 +1,21 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia\Inertia::render('About');
+Route::get('/', function() {
+    return Inertia::render('About', [
+        'testimonials' => App\Models\Testimonial::orderBy('year', 'desc')->get()
+    ]);
 })->name('about');
 
-Route::get('/projects', function () {
-    return Inertia\Inertia::render('Projects');
-})->name('projects');
+Route::get('/projects', fn() => Inertia::render('Projects'))->name('projects');
+Route::get('/resume', fn() => Inertia::render('Resume'))->name('resume');
 
-Route::get('/resume', function () {
-    return Inertia\Inertia::render('Resume');
-})->name('resume');
+Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
+    Route::get('/', fn() => Inertia::render('Admin'))->name('admin');
+    Route::resources([
+        'testimonials' => App\Http\Controllers\TestimonialController::class,
+    ]);
+});
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
