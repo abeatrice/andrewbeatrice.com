@@ -3713,62 +3713,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3776,7 +3720,8 @@ __webpack_require__.r(__webpack_exports__);
     GuestLayout: _Layouts_GuestLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_1__["Carousel"],
     Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_1__["Slide"]
-  }
+  },
+  props: ['testimonials']
 });
 
 /***/ }),
@@ -4753,6 +4698,108 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../Jetstream/FormSection */ "./resources/js/Jetstream/FormSection.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
+/* harmony import */ var _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../Jetstream/DangerButton */ "./resources/js/Jetstream/DangerButton.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4811,10 +4858,105 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
+
+
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['testimonials'],
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    JetFormSection: _Jetstream_FormSection__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_7__["default"],
+    JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__["default"],
+    JetDangerButton: _Jetstream_DangerButton__WEBPACK_IMPORTED_MODULE_9__["default"]
+  },
+  props: ['testimonials'],
+  data: function data() {
+    return {
+      creatingTestimonial: false,
+      updatingTestimonial: false,
+      testimonialBeingDeleted: null,
+      createTestimonialForm: this.$inertia.form({
+        content: '',
+        provider: '',
+        subprovider: '',
+        year: ''
+      }, {
+        bag: 'createTestimonial',
+        resetOnSuccess: true
+      }),
+      updateTestimonialForm: this.$inertia.form({
+        id: null,
+        content: null,
+        provider: null,
+        subprovider: null,
+        year: null
+      }, {
+        bag: 'updateTestimonial',
+        resetOnSuccess: false
+      }),
+      deleteTestimonialForm: this.$inertia.form()
+    };
+  },
+  methods: {
+    createTestimonial: function createTestimonial() {
+      var _this = this;
+
+      this.createTestimonialForm.post(route('testimonials.store'), {
+        preserveScroll: true
+      }).then(function (response) {
+        _this.creatingTestimonial = _this.createTestimonialForm.hasErrors();
+      });
+    },
+    updateTestimonial: function updateTestimonial() {
+      var _this2 = this;
+
+      this.updateTestimonialForm.put(route('testimonials.update', this.updateTestimonialForm.id), {
+        preserveScroll: true,
+        preserveState: true
+      }).then(function (response) {
+        _this2.updatingTestimonial = _this2.updateTestimonialForm.hasErrors();
+      });
+    },
+    confirmTestimonialDeletion: function confirmTestimonialDeletion(testimonial) {
+      this.testimonialBeingDeleted = testimonial;
+    },
+    showUpdateTestimonial: function showUpdateTestimonial(testimonial) {
+      if (this.$page.errorBags['updateTestimonial'] !== undefined) {
+        delete this.$page.errorBags['updateTestimonial']['content'];
+        delete this.$page.errorBags['updateTestimonial']['year'];
+      }
+
+      this.updateTestimonialForm.id = testimonial.id;
+      this.updateTestimonialForm.content = testimonial.content;
+      this.updateTestimonialForm.provider = testimonial.provider;
+      this.updateTestimonialForm.subprovider = testimonial.subprovider;
+      this.updateTestimonialForm.year = testimonial.year;
+      this.updatingTestimonial = true;
+    },
+    deleteTestimonial: function deleteTestimonial() {
+      var _this3 = this;
+
+      this.deleteTestimonialForm["delete"](route('testimonials.destroy', this.testimonialBeingDeleted), {
+        preserveScroll: true,
+        preserveState: true
+      }).then(function () {
+        _this3.testimonialBeingDeleted = null;
+      });
+    },
+    fromNow: function fromNow(timestamp) {
+      return moment(timestamp).local().fromNow();
+    }
   }
 });
 
@@ -28139,8 +28281,8 @@ var render = function() {
             _c(
               "carousel",
               { staticClass: "flex", attrs: { perPage: 1 } },
-              [
-                _c("slide", { staticClass: "self-center" }, [
+              _vm._l(_vm.testimonials, function(testimonial, i) {
+                return _c("slide", { key: i, staticClass: "self-center" }, [
                   _c(
                     "div",
                     {
@@ -28164,9 +28306,7 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("span", { staticClass: "relative z-10" }, [
-                            _vm._v(
-                              "I appreciate all the work that went into this solution. Everything you have brought to our application has been leaps and bounds ahead of where it would have been otherwise. The parts of Laravel that we now use cut application development time significantly. You've done wonderfully."
-                            )
+                            _vm._v(_vm._s(testimonial.content))
                           ]),
                           _vm._v(" "),
                           _c(
@@ -28188,7 +28328,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                Consumer Attorney Marketing Group\n                                "
+                            "\n                                " +
+                              _vm._s(testimonial.provider) +
+                              "\n                                "
                           ),
                           _c(
                             "span",
@@ -28197,274 +28339,18 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("span", { staticClass: "text-gray-500" }, [
-                            _vm._v("Tech Lead 2020")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "self-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "relative text-lg md:text-xl lg:text-2xl"
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "relative z-10" }, [
                             _vm._v(
-                              "Andrew continues to prove himself to be a top tier developer within our team and one of our go to developers as he is able to self-start the majority of his tasks and complete them with limited input from other developers. He provides excellent guidance and instruction to his fellow developers in areas of our system and coding languages where he has expertise. He is developing a greater understanding of the overall business, which enhances his ability to provide innovative solutions to the requests we receive. Andrew has become very proficient in the languages we use commonly as well as newer languages for the team like PHP."
+                              _vm._s(testimonial.subprovider) +
+                                " " +
+                                _vm._s(testimonial.year)
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Lamps Plus, Inc.\n                                "
-                          ),
-                          _c(
-                            "span",
-                            { staticClass: "font-black text-red-500" },
-                            [_vm._v("/")]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-gray-500" }, [
-                            _vm._v("Performance Evaluation 2019")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "self-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "relative text-lg md:text-xl lg:text-2xl"
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "relative z-10" }, [
-                            _vm._v(
-                              "Andrew has continued to perform at a high level. He continues to surpass my expectations of him in the work he does. Andrew is able to get through tasks without much input and come up with innovative solutions to user and system problems. Andrew has become proficient in RPG IV, CL, PML and PHP. His knowledge and expertise in PHP is helping us to create a message handling framework for the POS system. Based on his exemplary performance, Andrew was promoted from IBM i Programmer to IBM i Programmer/Analyst I back in February of this year."
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Lamps Plus, Inc.\n                                "
-                          ),
-                          _c(
-                            "span",
-                            { staticClass: "font-black text-red-500" },
-                            [_vm._v("/")]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-gray-500" }, [
-                            _vm._v("Performance Evaluation 2018")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "self-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "relative text-lg md:text-xl lg:text-2xl"
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "relative z-10" }, [
-                            _vm._v(
-                              "Andrew has become a very important member of our team over his first year at Lamps Plus. He is becoming well acquainted with most of the tools we use and is becoming more and more able to complete tasks with minimal input from other developers. He does a fine job of communicating with his fellow programmers. Andrew also works well with the users that we interact with most often. He is able to effectively take their requests and modify/create programs that reflect those expectations with little difficulty."
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Lamps Plus, Inc.\n                                "
-                          ),
-                          _c(
-                            "span",
-                            { staticClass: "font-black text-red-500" },
-                            [_vm._v("/")]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-gray-500" }, [
-                            _vm._v("Performance Evaluation 2017")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "self-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "mt-6 md:mt-10 lg:mt-16 px-4 md:px-6 lg:px-10 text-center self-center"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "relative text-lg md:text-xl lg:text-2xl"
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -top-4 md:-top-6 lg:-top-8 -left-2 lg:-left-4 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "relative z-10" }, [
-                            _vm._v(
-                              "Andrew is an excellent employee and has far surpassed my expectations of him coming into our group as a Junior Programmer. He is a motivated, self-starter who is able to produce quality work in a reasonable amount of time. He is becoming well acquainted with most of the tools we use and is able to complete tasks with minimal hand holding. He has incorporated himself well with our team and has become a valuable member of our group in short order."
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "absolute z-0 -bottom-4 md:-bottom-6 lg:-bottom-8 text-4xl md:text-5xl lg:text-6xl font-black text-indigo-300"
-                            },
-                            [_vm._v('"')]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mt-2 md:mt-4 lg:mt-8 text-md md:text-lg lg:text-xl"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Lamps Plus, Inc.\n                                "
-                          ),
-                          _c(
-                            "span",
-                            { staticClass: "font-black text-red-500" },
-                            [_vm._v("/")]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-gray-500" }, [
-                            _vm._v("Performance Evaluation 2016")
                           ])
                         ]
                       )
                     ]
                   )
                 ])
-              ],
+              }),
               1
             )
           ],
@@ -30257,196 +30143,669 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("app-layout", [
-    _c("div", { staticClass: "flex flex-col mx-auto" }, [
-      _c("div", { staticClass: "overflow-x-auto" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "mb-5 align-middle inline-block min-w-full sm:px-6 lg:px-8"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
-              },
-              [
-                _c(
-                  "table",
-                  { staticClass: "min-w-full divide-y divide-gray-200" },
-                  [
-                    _c("thead", [
-                      _c("tr", [
+  return _c(
+    "app-layout",
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "mb-5 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "flex justify-between mb-8" },
+            [
+              _c(
+                "h3",
+                {
+                  staticClass:
+                    "text-3xl leading-8 font-semibold text-gray-900 self-center"
+                },
+                [_vm._v("\n                Testimonials\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "jet-button",
+                {
+                  staticClass: "self-center",
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.creatingTestimonial = true
+                    }
+                  }
+                },
+                [_vm._v("\n                Create\n            ")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+            },
+            [
+              _c(
+                "table",
+                { staticClass: "min-w-full divide-y divide-gray-200" },
+                [
+                  _c("thead", [
+                    _c(
+                      "tr",
+                      {
+                        staticClass:
+                          "bg-gray-50 text-gray-500 uppercase tracking-wider text-xs leading-4"
+                      },
+                      [
                         _c(
                           "th",
-                          {
-                            staticClass:
-                              "px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                          },
+                          { staticClass: "px-6 py-3 text-left font-medium" },
                           [
                             _vm._v(
-                              "\n                                    Provider\n                                "
+                              "\n                            Provider / Sub-Provider (Year)\n                        "
                             )
                           ]
                         ),
                         _vm._v(" "),
                         _c(
                           "th",
-                          {
-                            staticClass:
-                              "px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                          },
+                          { staticClass: "px-6 py-3 text-left font-medium" },
                           [
                             _vm._v(
-                              "\n                                    SubProvider\n                                "
+                              "\n                            Content\n                        "
                             )
                           ]
                         ),
+                        _vm._v(" "),
+                        _c("th", { staticClass: "px-6 py-3" })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    {
+                      staticClass:
+                        "bg-white divide-y divide-gray-200 leading-5 text-sm text-gray-900"
+                    },
+                    _vm._l(_vm.testimonials, function(testimonial, i) {
+                      return _c("tr", { key: i }, [
+                        _c(
+                          "td",
+                          { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(testimonial.provider) +
+                                " / " +
+                                _vm._s(testimonial.subprovider) +
+                                " (" +
+                                _vm._s(testimonial.year) +
+                                ")\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "px-6 py-4" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "text-left text-gray-500 hover:text-gray-900 focus:outline-none",
+                              on: {
+                                click: function($event) {
+                                  return _vm.showUpdateTestimonial(testimonial)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(testimonial.content))]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c(
-                          "th",
+                          "td",
                           {
                             staticClass:
-                              "px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                              "px-6 py-4 whitespace-no-wrap text-right font-medium"
                           },
                           [
-                            _vm._v(
-                              "\n                                    Year\n                                "
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "text-red-600 hover:text-red-900 focus:outline-none",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.confirmTestimonialDeletion(
+                                      testimonial
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("Delete")]
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    Content\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "px-6 py-3 bg-gray-50" })
+                        )
                       ])
-                    ]),
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("jet-dialog-modal", {
+        attrs: { show: _vm.creatingTestimonial },
+        on: {
+          close: function($event) {
+            _vm.creatingTestimonial = false
+          }
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [_vm._v("\n            Create Testimonial\n        ")]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _c(
+                  "div",
+                  { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-4" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "content", value: "Content" }
+                        }),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.createTestimonialForm.content,
+                              expression: "createTestimonialForm.content"
+                            }
+                          ],
+                          staticClass:
+                            "mt-1 block w-full form-input rounded-md shadow-sm text-gray-500",
+                          attrs: {
+                            id: "content",
+                            name: "content",
+                            rows: "10",
+                            autofocus: ""
+                          },
+                          domProps: {
+                            value: _vm.createTestimonialForm.content
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.createTestimonialForm,
+                                "content",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.createTestimonialForm.error("content")
+                          }
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c(
-                      "tbody",
-                      { staticClass: "bg-white divide-y divide-gray-200" },
-                      _vm._l(_vm.testimonials, function(testimonial, i) {
-                        return _c("tr", { key: i }, [
-                          _c(
-                            "td",
-                            { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "text-sm leading-5 text-gray-900"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(testimonial.provider) +
-                                      "\n                                    "
-                                  )
-                                ]
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "provider", value: "Provider" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "provider", type: "text" },
+                          model: {
+                            value: _vm.createTestimonialForm.provider,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.createTestimonialForm,
+                                "provider",
+                                $$v
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "text-sm leading-5 text-gray-900"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(testimonial.subprovider) +
-                                      "\n                                    "
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "px-6 py-4 whitespace-no-wrap" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "text-sm leading-5 text-gray-900"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(testimonial.year) +
-                                      "\n                                    "
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-6 py-4 text-sm leading-5 text-gray-500"
                             },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(testimonial.content) +
-                                  "\n                                "
+                            expression: "createTestimonialForm.provider"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.createTestimonialForm.error("provider")
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "subprovider", value: "Sub-Provider" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "subprovider", type: "text" },
+                          model: {
+                            value: _vm.createTestimonialForm.subprovider,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.createTestimonialForm,
+                                "subprovider",
+                                $$v
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium"
                             },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "text-indigo-600 hover:text-indigo-900",
-                                  attrs: { href: "#" }
-                                },
-                                [_vm._v("Edit")]
-                              )
-                            ]
-                          )
-                        ])
-                      }),
-                      0
+                            expression: "createTestimonialForm.subprovider"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.createTestimonialForm.error(
+                              "subprovider"
+                            )
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "year", value: "Year" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "year", type: "text" },
+                          model: {
+                            value: _vm.createTestimonialForm.year,
+                            callback: function($$v) {
+                              _vm.$set(_vm.createTestimonialForm, "year", $$v)
+                            },
+                            expression: "createTestimonialForm.year"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.createTestimonialForm.error("year")
+                          }
+                        })
+                      ],
+                      1
                     )
                   ]
                 )
               ]
-            )
-          ]
-        )
-      ])
-    ])
-  ])
+            },
+            proxy: true
+          },
+          {
+            key: "footer",
+            fn: function() {
+              return [
+                _c(
+                  "jet-secondary-button",
+                  {
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.creatingTestimonial = false
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Nevermind\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "jet-button",
+                  {
+                    staticClass: "ml-2",
+                    class: {
+                      "opacity-25": _vm.createTestimonialForm.processing
+                    },
+                    attrs: { disabled: _vm.createTestimonialForm.processing },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.createTestimonial($event)
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Save\n            ")]
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c("jet-dialog-modal", {
+        attrs: { show: _vm.updatingTestimonial },
+        on: {
+          close: function($event) {
+            _vm.updatingTestimonial = false
+          }
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [_vm._v("\n            Update Testimonial\n        ")]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _c(
+                  "div",
+                  { staticClass: "grid grid-cols-1 md:grid-cols-2 gap-4" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "content", value: "Content" }
+                        }),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.updateTestimonialForm.content,
+                              expression: "updateTestimonialForm.content"
+                            }
+                          ],
+                          staticClass:
+                            "mt-1 block w-full form-input rounded-md shadow-sm text-gray-500",
+                          attrs: {
+                            id: "content",
+                            name: "content",
+                            rows: "10",
+                            autofocus: ""
+                          },
+                          domProps: {
+                            value: _vm.updateTestimonialForm.content
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.updateTestimonialForm,
+                                "content",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.updateTestimonialForm.error("content")
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "provider", value: "Provider" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "provider", type: "text" },
+                          model: {
+                            value: _vm.updateTestimonialForm.provider,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.updateTestimonialForm,
+                                "provider",
+                                $$v
+                              )
+                            },
+                            expression: "updateTestimonialForm.provider"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.updateTestimonialForm.error("provider")
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "subprovider", value: "Sub-Provider" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "subprovider", type: "text" },
+                          model: {
+                            value: _vm.updateTestimonialForm.subprovider,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.updateTestimonialForm,
+                                "subprovider",
+                                $$v
+                              )
+                            },
+                            expression: "updateTestimonialForm.subprovider"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.updateTestimonialForm.error(
+                              "subprovider"
+                            )
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-span-6 sm:col-span-4" },
+                      [
+                        _c("jet-label", {
+                          attrs: { for: "year", value: "Year" }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input", {
+                          staticClass: "mt-1 block w-full",
+                          attrs: { id: "year", type: "text" },
+                          model: {
+                            value: _vm.updateTestimonialForm.year,
+                            callback: function($$v) {
+                              _vm.$set(_vm.updateTestimonialForm, "year", $$v)
+                            },
+                            expression: "updateTestimonialForm.year"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("jet-input-error", {
+                          staticClass: "mt-2",
+                          attrs: {
+                            message: _vm.updateTestimonialForm.error("year")
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "footer",
+            fn: function() {
+              return [
+                _c(
+                  "jet-secondary-button",
+                  {
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.updatingTestimonial = false
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Nevermind\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "jet-button",
+                  {
+                    staticClass: "ml-2",
+                    class: {
+                      "opacity-25": _vm.updateTestimonialForm.processing
+                    },
+                    attrs: { disabled: _vm.updateTestimonialForm.processing },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.updateTestimonial($event)
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Update\n            ")]
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c("jet-confirmation-modal", {
+        attrs: { show: _vm.testimonialBeingDeleted },
+        on: {
+          close: function($event) {
+            _vm.testimonialBeingDeleted = null
+          }
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [_vm._v("\n            Delete Testimonial\n        ")]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _vm._v(
+                  "\n            Are you sure you would like to delete this Testimonial?\n        "
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "footer",
+            fn: function() {
+              return [
+                _c(
+                  "jet-secondary-button",
+                  {
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.testimonialBeingDeleted = null
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Nevermind\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "jet-danger-button",
+                  {
+                    staticClass: "ml-2",
+                    class: {
+                      "opacity-25": _vm.deleteTestimonialForm.processing
+                    },
+                    attrs: { disabled: _vm.deleteTestimonialForm.processing },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.deleteTestimonial($event)
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Delete\n            ")]
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -45632,8 +45991,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/abeatrice/andrewbeatrice.com/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/abeatrice/andrewbeatrice.com/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /var/www/html/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
