@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 
 Route::get('/', function() {
     return Inertia::render('About', [
@@ -15,7 +18,9 @@ Route::get('/resume', fn() => Inertia::render('Resume'))->name('resume');
 Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
     Route::get('/', fn() => Inertia::render('Admin'))->name('admin');
     Route::resources([
-        'testimonials' => App\Http\Controllers\TestimonialController::class,
+        'testimonials' => TestimonialController::class,
+        'education' => EducationController::class,
+        'experiences' => ExperienceController::class,
     ]);
 });
 
