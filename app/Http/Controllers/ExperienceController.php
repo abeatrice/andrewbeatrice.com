@@ -16,7 +16,7 @@ class ExperienceController extends Controller
     public function index()
     {
         return Inertia::render('Resources/Experiences', [
-            'experiences' => Experience::orderBy('started_on', 'desc')->get()
+            'experiences' => Experience::with('bulletPoints')->orderBy('started_on', 'desc')->get()
         ]);
     }
 

@@ -174,7 +174,7 @@
             JetDangerButton,
         },
 
-        props: ['testimonials'],
+        props: ['education'],
 
         data() {
             return {

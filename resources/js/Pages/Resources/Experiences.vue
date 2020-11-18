@@ -16,21 +16,33 @@
                     <thead>
                         <tr class="bg-gray-50 text-gray-500 uppercase tracking-wider text-xs leading-4">
                             <th class="px-6 py-3 text-left font-medium">
-                                Provider / Sub-Provider (Year)
+                                Company
                             </th>
                             <th class="px-6 py-3 text-left font-medium">
-                                Content
+                                Title
+                            </th>
+                            <th class="px-6 py-3 text-left font-medium">
+                                Started
+                            </th>
+                            <th class="px-6 py-3 text-left font-medium">
+                                Ended
                             </th>
                             <th class="px-6 py-3"></th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 leading-5 text-sm text-gray-900">
-                        <tr v-for="(testimonial, i) in testimonials" :key="i">
+                        <tr v-for="(experience, i) in experiences" :key="i">
                             <td class="px-6 py-4 whitespace-no-wrap">
-                                {{testimonial.provider}} / {{testimonial.subprovider}} ({{testimonial.year}})
+                                {{experience.company}}
                             </td>
-                            <td class="px-6 py-4">
-                                <button class="text-left text-gray-500 hover:text-gray-900 focus:outline-none" @click="showUpdateTestimonial(testimonial)">{{testimonial.content}}</button>
+                            <td class="px-6 py-4 whitespace-no-wrap">
+                                {{experience.title}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap">
+                                {{experience.started_on}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap">
+                                {{experience.ended_on}}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap text-right font-medium">
                                 <button class="text-red-600 hover:text-red-900 focus:outline-none" @click="confirmTestimonialDeletion(testimonial)">Delete</button>
@@ -174,7 +186,7 @@
             JetDangerButton,
         },
 
-        props: ['testimonials'],
+        props: ['experiences'],
 
         data() {
             return {
