@@ -1,63 +1,40 @@
 <template>
     <app-layout>
-        <div class="mb-5 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            
+        <div class="mb-5 px-8 align-middle inline-block min-w-full">
             <div class="flex justify-between mb-8">
                 <h3 class="text-3xl leading-8 font-semibold text-gray-900 self-center">
                     Experiences
                 </h3>
-                <jet-button class="self-center" @click.native="creatingTestimonial = true">
+                <jet-button class="self-center" @click.native="creating = true">
                     Create
                 </jet-button>
             </div>
 
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead>
-                        <tr class="bg-gray-50 text-gray-500 uppercase tracking-wider text-xs leading-4">
-                            <th class="px-6 py-3 text-left font-medium">
-                                Company
-                            </th>
-                            <th class="px-6 py-3 text-left font-medium">
-                                Title
-                            </th>
-                            <th class="px-6 py-3 text-left font-medium">
-                                Started
-                            </th>
-                            <th class="px-6 py-3 text-left font-medium">
-                                Ended
-                            </th>
-                            <th class="px-6 py-3"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 leading-5 text-sm text-gray-900">
-                        <tr v-for="(experience, i) in experiences" :key="i">
-                            <td class="px-6 py-4 whitespace-no-wrap">
-                                {{experience.company}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap">
-                                {{experience.title}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap">
-                                {{experience.started_on}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap">
-                                {{experience.ended_on}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap text-right font-medium">
-                                <button class="text-red-600 hover:text-red-900 focus:outline-none" @click="confirmTestimonialDeletion(testimonial)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <ab-table>
+                <template #thead>
+                    <ab-th>Company</ab-th>
+                    <ab-th>Title</ab-th>
+                    <ab-th>Started</ab-th>
+                    <ab-th>Ended</ab-th>
+                    <ab-th></ab-th>
+                </template>
+                <template #tbody>
+                    <tr v-for="(experience, i) in experiences" :key="i">
+                        <ab-td>{{experience.company}}</ab-td>
+                        <ab-td>{{experience.title}}</ab-td>
+                        <ab-td>{{experience.started_on}}</ab-td>
+                        <ab-td>{{experience.ended_on}}</ab-td>
+                        <ab-td class="text-right">
+                            <ab-delete-button @click="confirmDeletion(testimonial)" />
+                        </ab-td>
+                    </tr>
+                </template>
+            </ab-table>
         </div>
 
         <!-- Create Modal -->
-        <jet-dialog-modal :show="creatingTestimonial" @close="creatingTestimonial = false">
-            <template #title>
-                Create Testimonial
-            </template>
+        <jet-dialog-modal :show="creating" @close="creating = false">
+            <template #title>Create Experience</template>
 
             <template #content>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -85,7 +62,7 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click.native="creatingTestimonial = false">
+                <jet-secondary-button @click.native="creating = false">
                     Nevermind
                 </jet-secondary-button>
 
@@ -162,6 +139,10 @@
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
+    import AbTable from './../../Ab/Table'
+    import AbTh from './../../Ab/Th'
+    import AbTd from './../../Ab/Td'
+    import AbDeleteButton from './../../Ab/DeleteButton'
     import JetFormSection from './../../Jetstream/FormSection'
     import JetLabel from './../../Jetstream/Label'
     import JetInput from './../../Jetstream/Input'
@@ -175,6 +156,10 @@
     export default {
         components: {
             AppLayout,
+            AbTable,
+            AbTh,
+            AbTd,
+            AbDeleteButton,
             JetFormSection,
             JetLabel,
             JetInput,
@@ -190,7 +175,7 @@
 
         data() {
             return {
-                creatingTestimonial: false,
+                creating: false,
                 updatingTestimonial: false,
                 testimonialBeingDeleted: null,
 
@@ -224,7 +209,7 @@
                 this.createTestimonialForm.post(route('testimonials.store'), {
                     preserveScroll: true,
                 }).then(response => {
-                    this.creatingTestimonial = this.createTestimonialForm.hasErrors()
+                    this.creating = this.createTestimonialForm.hasErrors()
                 })
             },
 
@@ -237,7 +222,7 @@
                 })
             },
 
-            confirmTestimonialDeletion(testimonial) {
+            confirmDeletion(testimonial) {
                 this.testimonialBeingDeleted = testimonial
             },
 
