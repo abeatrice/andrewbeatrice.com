@@ -20,12 +20,28 @@
                 </template>
                 <template #tbody>
                     <tr v-for="(experience, i) in experiences" :key="i">
-                        <ab-td>{{experience.company}}</ab-td>
-                        <ab-td>{{experience.title}}</ab-td>
-                        <ab-td>{{experience.started_on}}</ab-td>
-                        <ab-td>{{experience.ended_on}}</ab-td>
+                        <ab-td>
+                            <ab-edit-button @click.native="showUpdate(experience)">
+                                {{experience.company}}
+                            </ab-edit-button>
+                        </ab-td>
+                        <ab-td>
+                            <ab-edit-button @click.native="showUpdate(experience)">
+                                {{experience.title}}
+                            </ab-edit-button>
+                        </ab-td>
+                        <ab-td>
+                            <ab-edit-button @click.native="showUpdate(experience)">
+                                {{experience.started_on}}
+                            </ab-edit-button>
+                        </ab-td>
+                        <ab-td>
+                            <ab-edit-button @click.native="showUpdate(experience)">
+                                {{experience.ended_on}}
+                            </ab-edit-button>
+                        </ab-td>
                         <ab-td class="text-right">
-                            <ab-delete-button @click="confirmDeletion(testimonial)" />
+                            <ab-delete-button @click="confirmDeletion(experience)" />
                         </ab-td>
                     </tr>
                 </template>
@@ -37,27 +53,25 @@
             <template #title>Create Experience</template>
 
             <template #content>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="content" value="Content" />
-                        <textarea id="content" name="content" class="mt-1 block w-full form-input rounded-md shadow-sm text-gray-500" rows="10" v-model="createTestimonialForm.content" autofocus></textarea>
-                        <jet-input-error :message="createTestimonialForm.error('content')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="provider" value="Provider" />
-                        <jet-input id="provider" type="text" class="mt-1 block w-full" v-model="createTestimonialForm.provider" />
-                        <jet-input-error :message="createTestimonialForm.error('provider')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="subprovider" value="Sub-Provider" />
-                        <jet-input id="subprovider" type="text" class="mt-1 block w-full" v-model="createTestimonialForm.subprovider" />
-                        <jet-input-error :message="createTestimonialForm.error('subprovider')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="year" value="Year" />
-                        <jet-input id="year" type="text" class="mt-1 block w-full" v-model="createTestimonialForm.year" />
-                        <jet-input-error :message="createTestimonialForm.error('year')" class="mt-2" />
-                    </div>
+                <div class="mb-4">
+                    <jet-label for="company" value="Company" />
+                    <jet-input id="company" type="text" class="mt-1 block w-full" v-model="createForm.company" />
+                    <jet-input-error :message="createForm.error('company')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="title" value="Title" />
+                    <jet-input id="title" type="text" class="mt-1 block w-full" v-model="createForm.title" />
+                    <jet-input-error :message="createForm.error('title')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="started_on" value="Started On" />
+                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat"  v-model="createForm.started_on" />
+                    <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="ended_on" value="Ended On" />
+                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="createForm.ended_on" />
+                    <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
                 </div>
             </template>
 
@@ -66,49 +80,45 @@
                     Nevermind
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click.native="createTestimonial" :class="{ 'opacity-25': createTestimonialForm.processing }" :disabled="createTestimonialForm.processing">
+                <jet-button class="ml-2" @click.native="createExperience" :class="{ 'opacity-25': createForm.processing }" :disabled="createForm.processing">
                     Save
                 </jet-button>
             </template>
         </jet-dialog-modal>
 
         <!-- Update Modal -->
-        <jet-dialog-modal :show="updatingTestimonial" @close="updatingTestimonial = false">
-            <template #title>
-                Update Testimonial
-            </template>
+        <jet-dialog-modal :show="updating" @close="updating = false">
+            <template #title>Update Experience</template>
 
             <template #content>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="content" value="Content" />
-                        <textarea id="content" name="content" class="mt-1 block w-full form-input rounded-md shadow-sm text-gray-500" rows="10" v-model="updateTestimonialForm.content" autofocus></textarea>
-                        <jet-input-error :message="updateTestimonialForm.error('content')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="provider" value="Provider" />
-                        <jet-input id="provider" type="text" class="mt-1 block w-full" v-model="updateTestimonialForm.provider" />
-                        <jet-input-error :message="updateTestimonialForm.error('provider')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="subprovider" value="Sub-Provider" />
-                        <jet-input id="subprovider" type="text" class="mt-1 block w-full" v-model="updateTestimonialForm.subprovider" />
-                        <jet-input-error :message="updateTestimonialForm.error('subprovider')" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="year" value="Year" />
-                        <jet-input id="year" type="text" class="mt-1 block w-full" v-model="updateTestimonialForm.year" />
-                        <jet-input-error :message="updateTestimonialForm.error('year')" class="mt-2" />
-                    </div>
+                <div class="mb-4">
+                    <jet-label for="company" value="Company" />
+                    <jet-input id="company" type="text" class="mt-1 block w-full" v-model="updateForm.company" />
+                    <jet-input-error :message="updateForm.error('company')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="title" value="Title" />
+                    <jet-input id="title" type="text" class="mt-1 block w-full" v-model="updateForm.title" />
+                    <jet-input-error :message="updateForm.error('title')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="started_on" value="Started On" />
+                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="updateForm.started_on" />
+                    <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <jet-label for="ended_on" value="Ended On" />
+                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="updateForm.ended_on" />
+                    <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
                 </div>
             </template>
 
             <template #footer>
-                <jet-secondary-button @click.native="updatingTestimonial = false">
+                <jet-secondary-button @click.native="updating = false">
                     Nevermind
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click.native="updateTestimonial" :class="{ 'opacity-25': updateTestimonialForm.processing }" :disabled="updateTestimonialForm.processing">
+                <jet-button class="ml-2" @click.native="updateExperience" :class="{ 'opacity-25': updateForm.processing }" :disabled="updateForm.processing">
                     Update
                 </jet-button>
             </template>
@@ -139,10 +149,12 @@
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
+    import Datepicker from 'vuejs-datepicker';
     import AbTable from './../../Ab/Table'
     import AbTh from './../../Ab/Th'
     import AbTd from './../../Ab/Td'
     import AbDeleteButton from './../../Ab/DeleteButton'
+    import AbEditButton from './../../Ab/EditButton'
     import JetFormSection from './../../Jetstream/FormSection'
     import JetLabel from './../../Jetstream/Label'
     import JetInput from './../../Jetstream/Input'
@@ -156,10 +168,12 @@
     export default {
         components: {
             AppLayout,
+            Datepicker,
             AbTable,
             AbTh,
             AbTd,
             AbDeleteButton,
+            AbEditButton,
             JetFormSection,
             JetLabel,
             JetInput,
@@ -176,27 +190,27 @@
         data() {
             return {
                 creating: false,
-                updatingTestimonial: false,
+                updating: false,
                 testimonialBeingDeleted: null,
 
-                createTestimonialForm: this.$inertia.form({
-                    content: '',
-                    provider: '',
-                    subprovider: '',
-                    year: '',
+                createForm: this.$inertia.form({
+                    company: '',
+                    title: '',
+                    started_on: null,
+                    ended_on: null,
                 }, {
-                    bag: 'createTestimonial',
+                    bag: 'createBag',
                     resetOnSuccess: true,
                 }),
 
-                updateTestimonialForm: this.$inertia.form({
+                updateForm: this.$inertia.form({
                     id: null,
-                    content: null,
-                    provider: null,
-                    subprovider: null,
-                    year: null,
+                    company: '',
+                    title: '',
+                    started_on: null,
+                    ended_on: null,
                 }, {
-                    bag: 'updateTestimonial',
+                    bag: 'updateBag',
                     resetOnSuccess: false,
                 }),
 
@@ -205,20 +219,22 @@
         },
 
         methods: {
-            createTestimonial() {
-                this.createTestimonialForm.post(route('testimonials.store'), {
-                    preserveScroll: true,
-                }).then(response => {
-                    this.creating = this.createTestimonialForm.hasErrors()
-                })
+            dateFormat(date) {
+                return moment(date).format('YYYY-MM-DD');
             },
 
-            updateTestimonial() {
-                this.updateTestimonialForm.put(route('testimonials.update', this.updateTestimonialForm.id), {
+            createExperience() {
+                this.createForm.post(route('experiences.store'), {
+                    preserveScroll: true,
+                }).then(() => this.creating = this.createForm.hasErrors())
+            },
+
+            updateExperience() {
+                this.updateForm.put(route('experiences.update', this.updateForm.id), {
                     preserveScroll: true,
                     preserveState: true,
                 }).then(response => {
-                    this.updatingTestimonial = this.updateTestimonialForm.hasErrors()
+                    this.updating = this.updateForm.hasErrors()
                 })
             },
 
@@ -226,17 +242,13 @@
                 this.testimonialBeingDeleted = testimonial
             },
 
-            showUpdateTestimonial(testimonial) {
-                if (this.$page.errorBags['updateTestimonial'] !== undefined) {
-                    delete this.$page.errorBags['updateTestimonial']['content']
-                    delete this.$page.errorBags['updateTestimonial']['year']
-                }
-                this.updateTestimonialForm.id = testimonial.id
-                this.updateTestimonialForm.content = testimonial.content
-                this.updateTestimonialForm.provider = testimonial.provider
-                this.updateTestimonialForm.subprovider = testimonial.subprovider
-                this.updateTestimonialForm.year = testimonial.year
-                this.updatingTestimonial = true
+            showUpdate(experience) {
+                this.updateForm.id = experience.id
+                this.updateForm.company = experience.company
+                this.updateForm.title = experience.title
+                this.updateForm.started_on = this.dateFormat(experience.started_on)
+                this.updateForm.ended_on = this.dateFormat(experience.ended_on)
+                this.updating = true
             },
 
             deleteTestimonial() {

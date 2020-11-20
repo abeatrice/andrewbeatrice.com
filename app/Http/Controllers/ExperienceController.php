@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class ExperienceController extends Controller
 {
@@ -21,16 +23,6 @@ class ExperienceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,29 +30,26 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Validator::make([
+            'company' => $request->company,
+            'title' => $request->title,
+            'started_on' => $request->started_on,
+        ], [
+            'company' => ['required', 'string', 'max:100'],
+            'title' => ['required', 'string', 'max:100'],
+            'started_on' => ['required', 'date'],
+        ])->validateWithBag('createBag');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Experience  $experience
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Experience $experience)
-    {
-        //
-    }
+        $experience = Experience::create([
+            'company' => $request->company,
+            'title' => $request->title,
+            'started_on' => (new Carbon($request->started_on))->format('Y-m-d'),
+            'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Experience  $experience
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Experience $experience)
-    {
-        //
+        return back()->with('flash', [
+            'experience' => $experience
+        ]);
     }
 
     /**
