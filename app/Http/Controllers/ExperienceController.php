@@ -61,7 +61,24 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, Experience $experience)
     {
-        //
+        Validator::make([
+            'company' => $request->company,
+            'title' => $request->title,
+            'started_on' => $request->started_on,
+        ], [
+            'company' => ['required', 'string', 'max:100'],
+            'title' => ['required', 'string', 'max:100'],
+            'started_on' => ['required', 'date'],
+        ])->validateWithBag('updateBag');
+
+        $experience->update([
+            'company' => $request->company,
+            'title' => $request->title,
+            'started_on' => (new Carbon($request->started_on))->format('Y-m-d'),
+            'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
+        ]);
+
+        return back();
     }
 
     /**
@@ -72,6 +89,7 @@ class ExperienceController extends Controller
      */
     public function destroy(Experience $experience)
     {
-        //
+        $experience->delete();
+        return back();
     }
 }

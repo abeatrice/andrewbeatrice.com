@@ -41,7 +41,7 @@
                             </ab-edit-button>
                         </ab-td>
                         <ab-td class="text-right">
-                            <ab-delete-button @click="confirmDeletion(experience)" />
+                            <ab-delete-button @click.native="confirmDeletion(experience)" />
                         </ab-td>
                     </tr>
                 </template>
@@ -63,15 +63,23 @@
                     <jet-input id="title" type="text" class="mt-1 block w-full" v-model="createForm.title" />
                     <jet-input-error :message="createForm.error('title')" class="mt-2" />
                 </div>
-                <div class="mb-4">
-                    <jet-label for="started_on" value="Started On" />
-                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat"  v-model="createForm.started_on" />
-                    <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
-                </div>
-                <div class="mb-4">
-                    <jet-label for="ended_on" value="Ended On" />
-                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="createForm.ended_on" />
-                    <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
+                <div class="flex mb-4">
+                    <div class="flex-1">
+                        <div class="flex mb-1">
+                            <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
+                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="createForm.started_on = null">Clear</ab-delete-button>
+                        </div>
+                        <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :inline="true"  v-model="createForm.started_on" />
+                        <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex mb-1">
+                            <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
+                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="createForm.ended_on = null">Clear</ab-delete-button>
+                        </div>
+                        <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :inline="true" v-model="createForm.ended_on" />
+                        <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
+                    </div>
                 </div>
             </template>
 
@@ -101,15 +109,23 @@
                     <jet-input id="title" type="text" class="mt-1 block w-full" v-model="updateForm.title" />
                     <jet-input-error :message="updateForm.error('title')" class="mt-2" />
                 </div>
-                <div class="mb-4">
-                    <jet-label for="started_on" value="Started On" />
-                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="updateForm.started_on" />
-                    <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
-                </div>
-                <div class="mb-4">
-                    <jet-label for="ended_on" value="Ended On" />
-                    <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :format="dateFormat" v-model="updateForm.ended_on" />
-                    <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
+                <div class="flex mb-4">
+                    <div class="flex-1">
+                        <div class="flex mb-1">
+                            <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
+                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
+                        </div>
+                        <datepicker input-class="mt-1" :inline="true" v-model="updateForm.started_on" />
+                        <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex mb-1">
+                            <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
+                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
+                        </div>
+                        <datepicker input-class="mt-1" :inline="true" v-model="updateForm.ended_on" />
+                        <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
+                    </div>
                 </div>
             </template>
 
@@ -125,21 +141,19 @@
         </jet-dialog-modal>
 
         <!-- Delete Confirmation Modal -->
-        <jet-confirmation-modal :show="testimonialBeingDeleted" @close="testimonialBeingDeleted = null">
-            <template #title>
-                Delete Testimonial
-            </template>
+        <jet-confirmation-modal :show="deleting" @close="deleting = null">
+            <template #title>Delete Experience</template>
 
             <template #content>
-                Are you sure you would like to delete this Testimonial?
+                Are you sure you would like to delete this?
             </template>
 
             <template #footer>
-                <jet-secondary-button @click.native="testimonialBeingDeleted = null">
+                <jet-secondary-button @click.native="deleting = null">
                     Nevermind
                 </jet-secondary-button>
 
-                <jet-danger-button class="ml-2" @click.native="deleteTestimonial" :class="{ 'opacity-25': deleteTestimonialForm.processing }" :disabled="deleteTestimonialForm.processing">
+                <jet-danger-button class="ml-2" @click.native="deleteExperience" :class="{ 'opacity-25': deleteExperienceForm.processing }" :disabled="deleteExperienceForm.processing">
                     Delete
                 </jet-danger-button>
             </template>
@@ -191,7 +205,7 @@
             return {
                 creating: false,
                 updating: false,
-                testimonialBeingDeleted: null,
+                deleting: null,
 
                 createForm: this.$inertia.form({
                     company: '',
@@ -214,55 +228,38 @@
                     resetOnSuccess: false,
                 }),
 
-                deleteTestimonialForm: this.$inertia.form(),
+                deleteExperienceForm: this.$inertia.form(),
             }
         },
 
         methods: {
-            dateFormat(date) {
-                return moment(date).format('YYYY-MM-DD');
-            },
-
             createExperience() {
-                this.createForm.post(route('experiences.store'), {
-                    preserveScroll: true,
-                }).then(() => this.creating = this.createForm.hasErrors())
-            },
-
-            updateExperience() {
-                this.updateForm.put(route('experiences.update', this.updateForm.id), {
-                    preserveScroll: true,
-                    preserveState: true,
-                }).then(response => {
-                    this.updating = this.updateForm.hasErrors()
-                })
-            },
-
-            confirmDeletion(testimonial) {
-                this.testimonialBeingDeleted = testimonial
+                this.createForm.post(route('experiences.store'))
+                .then(() => this.creating = this.createForm.hasErrors())
             },
 
             showUpdate(experience) {
                 this.updateForm.id = experience.id
                 this.updateForm.company = experience.company
                 this.updateForm.title = experience.title
-                this.updateForm.started_on = this.dateFormat(experience.started_on)
-                this.updateForm.ended_on = this.dateFormat(experience.ended_on)
+                this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00')
+                this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00') : null
                 this.updating = true
             },
 
-            deleteTestimonial() {
-                this.deleteTestimonialForm.delete(route('testimonials.destroy', this.testimonialBeingDeleted), {
-                    preserveScroll: true,
-                    preserveState: true,
-                }).then(() => {
-                    this.testimonialBeingDeleted = null
-                })
+            updateExperience() {
+                this.updateForm.put(route('experiences.update', this.updateForm.id))
+                .then(() => this.updating = this.updateForm.hasErrors())
             },
 
-            fromNow(timestamp) {
-                return moment(timestamp).local().fromNow()
+            confirmDeletion(experience) {
+                this.deleting = experience
             },
+
+            deleteExperience() {
+                this.deleteExperienceForm.delete(route('experiences.destroy', this.deleting))
+                .then(() => this.deleting = null)
+            }
         },
     }
 </script>
