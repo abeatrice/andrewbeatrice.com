@@ -60,7 +60,7 @@ class ExperienceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Experience $experience)
-    {
+    {dd($request->bullet_points);
         Validator::make([
             'company' => $request->company,
             'title' => $request->title,
@@ -77,6 +77,8 @@ class ExperienceController extends Controller
             'started_on' => (new Carbon($request->started_on))->format('Y-m-d'),
             'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
         ]);
+
+        $experience->bulletPoints()->sync($request->bullet_points);
 
         return back();
     }

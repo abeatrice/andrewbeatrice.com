@@ -99,32 +99,40 @@
             <template #title>Update Experience</template>
 
             <template #content>
-                <div class="mb-4">
-                    <jet-label for="company" value="Company" />
-                    <jet-input id="company" type="text" class="mt-1 block w-full" v-model="updateForm.company" />
-                    <jet-input-error :message="updateForm.error('company')" class="mt-2" />
-                </div>
-                <div class="mb-4">
-                    <jet-label for="title" value="Title" />
-                    <jet-input id="title" type="text" class="mt-1 block w-full" v-model="updateForm.title" />
-                    <jet-input-error :message="updateForm.error('title')" class="mt-2" />
-                </div>
-                <div class="flex mb-4">
-                    <div class="flex-1">
-                        <div class="flex mb-1">
-                            <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
-                        </div>
-                        <datepicker input-class="mt-1" :inline="true" v-model="updateForm.started_on" />
-                        <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
+                <div class="overflow-auto">
+                    <div class="mb-4">
+                        <jet-label for="company" value="Company" />
+                        <jet-input id="company" type="text" class="mt-1 block w-full" v-model="updateForm.company" />
+                        <jet-input-error :message="updateForm.error('company')" class="mt-2" />
                     </div>
-                    <div class="flex-1">
-                        <div class="flex mb-1">
-                            <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
+                    <div class="mb-4">
+                        <jet-label for="title" value="Title" />
+                        <jet-input id="title" type="text" class="mt-1 block w-full" v-model="updateForm.title" />
+                        <jet-input-error :message="updateForm.error('title')" class="mt-2" />
+                    </div>
+                    <div class="flex mb-4">
+                        <div class="flex-1">
+                            <div class="flex mb-1">
+                                <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
+                                <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
+                            </div>
+                            <datepicker input-class="mt-1" :inline="true" v-model="updateForm.started_on" />
+                            <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
                         </div>
-                        <datepicker input-class="mt-1" :inline="true" v-model="updateForm.ended_on" />
-                        <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
+                        <div class="flex-1">
+                            <div class="flex mb-1">
+                                <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
+                                <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
+                            </div>
+                            <datepicker input-class="mt-1" :inline="true" v-model="updateForm.ended_on" />
+                            <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <jet-label value="Bullet Points" />
+                    </div>
+                    <div v-for="(bullet_point, i) in updateForm.bullet_points" :key="i" class="mb-4">
+                        <textarea class="block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="updateForm.bullet_points[i].content" />
                     </div>
                 </div>
             </template>
@@ -169,7 +177,6 @@
     import AbTd from './../../Ab/Td'
     import AbDeleteButton from './../../Ab/DeleteButton'
     import AbEditButton from './../../Ab/EditButton'
-    import JetFormSection from './../../Jetstream/FormSection'
     import JetLabel from './../../Jetstream/Label'
     import JetInput from './../../Jetstream/Input'
     import JetInputError from './../../Jetstream/InputError'
@@ -188,7 +195,6 @@
             AbTd,
             AbDeleteButton,
             AbEditButton,
-            JetFormSection,
             JetLabel,
             JetInput,
             JetInputError,
@@ -223,6 +229,7 @@
                     title: '',
                     started_on: null,
                     ended_on: null,
+                    bullet_points: [],
                 }, {
                     bag: 'updateBag',
                     resetOnSuccess: false,
@@ -244,6 +251,7 @@
                 this.updateForm.title = experience.title
                 this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00')
                 this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00') : null
+                this.updateForm.bullet_points = experience.bullet_points
                 this.updating = true
             },
 
