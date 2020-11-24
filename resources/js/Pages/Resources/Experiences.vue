@@ -49,36 +49,38 @@
         </div>
 
         <!-- Create Modal -->
-        <jet-dialog-modal :show="creating" @close="creating = false">
+        <jet-dialog-modal :show="creating" maxWidth="3xl" @close="creating = false">
             <template #title>Create Experience</template>
 
             <template #content>
-                <div class="mb-4">
-                    <jet-label for="company" value="Company" />
-                    <jet-input id="company" type="text" class="mt-1 block w-full" v-model="createForm.company" />
-                    <jet-input-error :message="createForm.error('company')" class="mt-2" />
-                </div>
-                <div class="mb-4">
-                    <jet-label for="title" value="Title" />
-                    <jet-input id="title" type="text" class="mt-1 block w-full" v-model="createForm.title" />
-                    <jet-input-error :message="createForm.error('title')" class="mt-2" />
-                </div>
-                <div class="flex mb-4">
-                    <div class="flex-1">
-                        <div class="flex mb-1">
-                            <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="createForm.started_on = null">Clear</ab-delete-button>
-                        </div>
-                        <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :inline="true"  v-model="createForm.started_on" />
-                        <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
+                <div class="max-h-192 px-4 overflow-auto">
+                    <div class="mb-4">
+                        <jet-label for="company" value="Company" />
+                        <jet-input id="company" type="text" class="mt-1 block w-full" v-model="createForm.company" />
+                        <jet-input-error :message="createForm.error('company')" class="mt-2" />
                     </div>
-                    <div class="flex-1">
-                        <div class="flex mb-1">
-                            <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                            <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="createForm.ended_on = null">Clear</ab-delete-button>
+                    <div class="mb-4">
+                        <jet-label for="title" value="Title" />
+                        <jet-input id="title" type="text" class="mt-1 block w-full" v-model="createForm.title" />
+                        <jet-input-error :message="createForm.error('title')" class="mt-2" />
+                    </div>
+                    <div class="flex justify-between mb-4">
+                        <div>
+                            <div class="flex mb-1">
+                                <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
+                                <ab-delete-button class="flex-1 self-center text-right" @click.native="createForm.started_on = null">Clear</ab-delete-button>
+                            </div>
+                            <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.started_on" />
+                            <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
                         </div>
-                        <datepicker input-class="form-input rounded-md shadow-sm mt-1 block w-full" :inline="true" v-model="createForm.ended_on" />
-                        <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
+                        <div>
+                            <div class="flex mb-1">
+                                <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
+                                <ab-delete-button class="flex-1 self-center text-right" @click.native="createForm.ended_on = null">Clear</ab-delete-button>
+                            </div>
+                            <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.ended_on" />
+                            <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
+                        </div>
                     </div>
                 </div>
             </template>
@@ -95,11 +97,11 @@
         </jet-dialog-modal>
 
         <!-- Update Modal -->
-        <jet-dialog-modal :show="updating" @close="updating = false">
+        <jet-dialog-modal :show="updating" maxWidth="3xl" @close="updating = false">
             <template #title>Update Experience</template>
 
             <template #content>
-                <div class="overflow-auto">
+                <div class="max-h-192 px-4 overflow-auto">
                     <div class="mb-4">
                         <jet-label for="company" value="Company" />
                         <jet-input id="company" type="text" class="mt-1 block w-full" v-model="updateForm.company" />
@@ -110,21 +112,21 @@
                         <jet-input id="title" type="text" class="mt-1 block w-full" v-model="updateForm.title" />
                         <jet-input-error :message="updateForm.error('title')" class="mt-2" />
                     </div>
-                    <div class="flex mb-4">
-                        <div class="flex-1">
+                    <div class="flex justify-between mb-4">
+                        <div>
                             <div class="flex mb-1">
                                 <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                                <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="flex-1 self-center text-right" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
                             </div>
-                            <datepicker input-class="mt-1" :inline="true" v-model="updateForm.started_on" />
+                            <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.started_on" />
                             <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
                         </div>
-                        <div class="flex-1">
+                        <div>
                             <div class="flex mb-1">
                                 <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                                <ab-delete-button class="flex-1 self-center text-right pr-5" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="flex-1 self-center text-right" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
                             </div>
-                            <datepicker input-class="mt-1" :inline="true" v-model="updateForm.ended_on" />
+                            <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.ended_on" />
                             <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
                         </div>
                     </div>

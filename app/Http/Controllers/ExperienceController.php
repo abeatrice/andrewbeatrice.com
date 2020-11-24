@@ -30,6 +30,7 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         Validator::make([
             'company' => $request->company,
             'title' => $request->title,
