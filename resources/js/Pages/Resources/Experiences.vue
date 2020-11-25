@@ -243,6 +243,8 @@
 
         methods: {
             createExperience() {
+                this.createForm.started_on = this.createForm.started_on ? new Date(this.createForm.started_on).toDateString() : null
+                this.createForm.ended_on = this.createForm.ended_on ? new Date(this.createForm.ended_on).toDateString() : null
                 this.createForm.post(route('experiences.store'))
                 .then(() => this.creating = this.createForm.hasErrors())
             },
@@ -251,8 +253,8 @@
                 this.updateForm.id = experience.id
                 this.updateForm.company = experience.company
                 this.updateForm.title = experience.title
-                this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00')
-                this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00') : null
+                this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00').toDateString()
+                this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00').toDateString() : null
                 this.updateForm.bullet_points = experience.bullet_points
                 this.updating = true
             },

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BulletPoint;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -30,7 +31,6 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         Validator::make([
             'company' => $request->company,
             'title' => $request->title,
@@ -61,7 +61,8 @@ class ExperienceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Experience $experience)
-    {dd($request->bullet_points);
+    {
+        //dd($request);
         Validator::make([
             'company' => $request->company,
             'title' => $request->title,
@@ -79,7 +80,13 @@ class ExperienceController extends Controller
             'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
         ]);
 
-        $experience->bulletPoints()->sync($request->bullet_points);
+        foreach($request->bullet_points as $bullet_point) {
+            if(!empty($bullet_point['id'])) {
+                BulletPoint::find($bullet_point['id'])->update([
+                    'content' => $bullet_point['content']
+                ]);
+            } 
+        }
 
         return back();
     }
