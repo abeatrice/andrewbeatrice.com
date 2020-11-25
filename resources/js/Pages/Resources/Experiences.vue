@@ -68,9 +68,7 @@
                         <div>
                             <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="createForm.started_on = null">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="createForm.started_on = null" />
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.started_on" />
                             <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
@@ -78,9 +76,7 @@
                         <div>
                             <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="createForm.ended_on = null">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="createForm.ended_on = null" />
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.ended_on" />
                             <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
@@ -96,10 +92,10 @@
                     </div>
                     <div v-for="(bullet_point, i) in createForm.bullet_points" :key="i" class="mb-4">
                         <div class="flex">
-                            <textarea class="flex-1 self-center block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="createForm.bullet_points[i].content" />
                             <ab-delete-button @click.native="removeBulletPoint(createForm.bullet_points, i)">
-                                <svg class="h-6 w-6 ml-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <svg class="h-6 w-6 mr-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </ab-delete-button>
+                            <textarea class="flex-1 self-center block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="createForm.bullet_points[i].content" />
                         </div>
                     </div>
                 </div>
@@ -136,9 +132,7 @@
                         <div>
                             <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="updateForm.started_on = null">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="updateForm.started_on = null" />
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.started_on" />
                             <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
@@ -146,9 +140,7 @@
                         <div>
                             <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="updateForm.ended_on = null">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="updateForm.ended_on = null" />
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.ended_on" />
                             <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
@@ -164,10 +156,10 @@
                     </div>
                     <div v-for="(bullet_point, i) in updateForm.bullet_points" :key="i" class="mb-4">
                         <div class="flex">
-                            <textarea class="block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="updateForm.bullet_points[i].content" />
                             <ab-delete-button @click.native="removeBulletPoint(updateForm.bullet_points, i)">
-                                <svg class="h-6 w-6 ml-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <svg class="h-6 w-6 mr-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </ab-delete-button>
+                            <textarea class="block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="updateForm.bullet_points[i].content" />
                         </div>
                     </div>
                 </div>

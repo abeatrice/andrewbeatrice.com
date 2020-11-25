@@ -89,8 +89,13 @@ class ExperienceController extends Controller
             'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
         ]);
 
+        //delete current bullet points not in the request
+        $currentBulletPoints = collect($experience->bulletPoints()->pluck('id'));
+        $bulletPointsInRequest = collect($request->bullet_points)->where('id', '!=', null)->pluck('id')->toArray();
+        BulletPoint::whereIn('id', $currentBulletPoints->diff($bulletPointsInRequest))->delete();
+
+        //update or create bullet points in the request
         $bullet_points = collect($request->bullet_points)->where('content', '!=', null);
-        //TODO delete bullet points that exist that are not in the request bullet points
         foreach($bullet_points as $bullet_point) {
             if(!empty($bullet_point['id'])) {
                 BulletPoint::find($bullet_point['id'])->update([
@@ -117,6 +122,7 @@ class ExperienceController extends Controller
      */
     public function destroy(Experience $experience)
     {
+        $experience->bulletPoints()->delete();
         $experience->delete();
         return back();
     }
