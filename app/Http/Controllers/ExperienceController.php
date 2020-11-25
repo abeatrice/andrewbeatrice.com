@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BulletPoint;
 use App\Models\Experience;
+use App\Models\BulletPoint;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;

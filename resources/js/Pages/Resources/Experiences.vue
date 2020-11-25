@@ -295,7 +295,6 @@
                 this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00').toDateString()
                 this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00').toDateString() : null
                 this.updateForm.bullet_points = (Object.keys(experience.bullet_points).length > 0) ? experience.bullet_points : [{content: ''}]
-                console.log()
                 this.updating = true
             },
 
