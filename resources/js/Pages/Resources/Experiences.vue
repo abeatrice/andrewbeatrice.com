@@ -66,20 +66,40 @@
                     </div>
                     <div class="flex justify-between mb-4">
                         <div>
-                            <div class="flex mb-1">
+                            <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                                <ab-delete-button class="flex-1 self-center text-right" @click.native="createForm.started_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="createForm.started_on = null">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </ab-delete-button>
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.started_on" />
                             <jet-input-error :message="createForm.error('started_on')" class="mt-2" />
                         </div>
                         <div>
-                            <div class="flex mb-1">
+                            <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                                <ab-delete-button class="flex-1 self-center text-right" @click.native="createForm.ended_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="createForm.ended_on = null">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </ab-delete-button>
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="createForm.ended_on" />
                             <jet-input-error :message="createForm.error('ended_on')" class="mt-2" />
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between">
+                            <jet-label class="flex-1" value="Bullet Points" />
+                            <button class="text-green-600 hover:text-green-900 focus:outline-none" title="Add Bullet Point" @click="addBulletPoint(createForm.bullet_points)">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div v-for="(bullet_point, i) in createForm.bullet_points" :key="i" class="mb-4">
+                        <div class="flex">
+                            <textarea class="flex-1 self-center block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="createForm.bullet_points[i].content" />
+                            <ab-delete-button @click.native="removeBulletPoint(createForm.bullet_points, i)">
+                                <svg class="h-6 w-6 ml-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </ab-delete-button>
                         </div>
                     </div>
                 </div>
@@ -114,27 +134,41 @@
                     </div>
                     <div class="flex justify-between mb-4">
                         <div>
-                            <div class="flex mb-1">
+                            <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="started_on" value="Started On" />
-                                <ab-delete-button class="flex-1 self-center text-right" @click.native="updateForm.started_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Started On" @click.native="updateForm.started_on = null">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </ab-delete-button>
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.started_on" />
                             <jet-input-error :message="updateForm.error('started_on')" class="mt-2" />
                         </div>
                         <div>
-                            <div class="flex mb-1">
+                            <div class="flex justify-between mb-1">
                                 <jet-label class="flex-1 self-center" for="ended_on" value="Ended On" />
-                                <ab-delete-button class="flex-1 self-center text-right" @click.native="updateForm.ended_on = null">Clear</ab-delete-button>
+                                <ab-delete-button class="self-center" title="Clear Ended On" @click.native="updateForm.ended_on = null">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </ab-delete-button>
                             </div>
                             <datepicker wrapper-class="flex justify-center" :inline="true" v-model="updateForm.ended_on" />
                             <jet-input-error :message="updateForm.error('ended_on')" class="mt-2" />
                         </div>
                     </div>
                     <div class="mb-4">
-                        <jet-label value="Bullet Points" />
+                        <div class="flex justify-between">
+                            <jet-label class="flex-1" value="Bullet Points" />
+                            <button class="text-green-600 hover:text-green-900 focus:outline-none" title="Add Bullet Point" @click="addBulletPoint(updateForm.bullet_points)">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </button>
+                        </div>
                     </div>
                     <div v-for="(bullet_point, i) in updateForm.bullet_points" :key="i" class="mb-4">
-                        <textarea class="block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="updateForm.bullet_points[i].content" />
+                        <div class="flex">
+                            <textarea class="block w-full form-input rounded-md shadow-sm text-gray-500" rows="3" v-model="updateForm.bullet_points[i].content" />
+                            <ab-delete-button @click.native="removeBulletPoint(updateForm.bullet_points, i)">
+                                <svg class="h-6 w-6 ml-3 self-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </ab-delete-button>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -173,7 +207,7 @@
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
-    import Datepicker from 'vuejs-datepicker';
+    import Datepicker from 'vuejs-datepicker'
     import AbTable from './../../Ab/Table'
     import AbTh from './../../Ab/Th'
     import AbTd from './../../Ab/Td'
@@ -220,6 +254,11 @@
                     title: '',
                     started_on: null,
                     ended_on: null,
+                    bullet_points: [
+                        {
+                            content: '',
+                        },
+                    ],
                 }, {
                     bag: 'createBag',
                     resetOnSuccess: true,
@@ -242,6 +281,14 @@
         },
 
         methods: {
+            addBulletPoint(bullet_points) {
+                bullet_points.push({content: ''})
+            },
+
+            removeBulletPoint(bullet_points, i) {
+                bullet_points.splice(i, 1)
+            },
+
             createExperience() {
                 this.createForm.started_on = this.createForm.started_on ? new Date(this.createForm.started_on).toDateString() : null
                 this.createForm.ended_on = this.createForm.ended_on ? new Date(this.createForm.ended_on).toDateString() : null
@@ -255,7 +302,8 @@
                 this.updateForm.title = experience.title
                 this.updateForm.started_on = new Date(experience.started_on + 'T00:00:00').toDateString()
                 this.updateForm.ended_on = experience.ended_on ? new Date(experience.ended_on + 'T00:00:00').toDateString() : null
-                this.updateForm.bullet_points = experience.bullet_points
+                this.updateForm.bullet_points = (Object.keys(experience.bullet_points).length > 0) ? experience.bullet_points : [{content: ''}]
+                console.log()
                 this.updating = true
             },
 

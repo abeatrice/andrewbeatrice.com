@@ -48,6 +48,16 @@ class ExperienceController extends Controller
             'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
         ]);
 
+        $bullet_points = collect($request->bullet_points)->where('content', '!=', null);
+        foreach ($bullet_points as $index => $bullet_point) {
+            $experience->bulletPoints()->save(
+                new BulletPoint([
+                    'order' => $index,
+                    'content' => $bullet_point['content'],
+                ])
+            );
+        }
+
         return back()->with('flash', [
             'experience' => $experience
         ]);
@@ -62,7 +72,6 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, Experience $experience)
     {
-        //dd($request);
         Validator::make([
             'company' => $request->company,
             'title' => $request->title,
@@ -80,12 +89,21 @@ class ExperienceController extends Controller
             'ended_on' => !is_null($request->ended_on) ? (new Carbon($request->ended_on))->format('Y-m-d') : null,
         ]);
 
-        foreach($request->bullet_points as $bullet_point) {
+        $bullet_points = collect($request->bullet_points)->where('content', '!=', null);
+        //TODO delete bullet points that exist that are not in the request bullet points
+        foreach($bullet_points as $bullet_point) {
             if(!empty($bullet_point['id'])) {
                 BulletPoint::find($bullet_point['id'])->update([
                     'content' => $bullet_point['content']
                 ]);
-            } 
+            } else {
+                $experience->bulletPoints()->save(
+                    new BulletPoint([
+                        'order' => BulletPoint::max('order') + 1,
+                        'content' => $bullet_point['content'],
+                    ])
+                );
+            }
         }
 
         return back();
