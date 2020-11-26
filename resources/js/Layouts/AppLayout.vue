@@ -41,19 +41,22 @@
                                 </template>
 
                                 <template #content>
-                                    <!-- Account Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        Manage Resources
+                                        About Resources
                                     </div>
-
                                     <jet-dropdown-link :href="route('testimonials.index')">
                                         Testimonials
                                     </jet-dropdown-link>
-                                    <jet-dropdown-link :href="route('education.index')">
-                                        Education
-                                    </jet-dropdown-link>
+                                    <div class="border-t border-gray-100"></div>
+
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        Resume Resources
+                                    </div>
                                     <jet-dropdown-link :href="route('experiences.index')">
                                         Experiences
+                                    </jet-dropdown-link>
+                                    <jet-dropdown-link :href="route('education.index')">
+                                        Education
                                     </jet-dropdown-link>
 
                                     <div class="border-t border-gray-100"></div>

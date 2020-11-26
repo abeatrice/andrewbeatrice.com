@@ -104,5 +104,6 @@
         components: {
             GuestLayout,
         },
+        props: ['experiences','education'],
     }
 </script>
