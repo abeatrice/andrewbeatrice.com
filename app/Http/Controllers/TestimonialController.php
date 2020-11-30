@@ -34,7 +34,7 @@ class TestimonialController extends Controller
             'year' => $request->year,
         ], [
             'content' => ['required', 'string', 'max:1024'],
-            'year' => ['required', 'string', 'min:4', 'max:4'],
+            'year' => ['required', 'numeric', 'digits:4'],
         ])->validateWithBag('createTestimonial');
 
         $testimonial = Testimonial::create([

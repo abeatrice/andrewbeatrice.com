@@ -31,7 +31,13 @@ module.exports = {
                 '-48': '-12rem',
                 '-56': '-14rem',
                 '-64': '-16rem',
-            }
+            },
+            maxHeight: {
+                '192': '48rem',
+            },
+            minWidth: {
+                'xs': '20rem',
+            },
         },
     },
 

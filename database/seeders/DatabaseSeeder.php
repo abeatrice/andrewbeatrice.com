@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             TestimonialSeeder::class,
+            EducationSeeder::class,
+            ExperienceSeeder::class,
+            BulletPointSeeder::class,
         ]);
     }
 }
