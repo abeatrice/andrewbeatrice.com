@@ -9,20 +9,26 @@
             </p>
 
             <div class="my-5 mx-auto max-w-2xl">
-                <div class="my-5 md:my-5 grid grid-flow-row grid-cols-1 grid-rows-3 md:grid-cols-2 md:grid-rows-2 gap-x-16 gap-y-4 md:gap-x-24 md:gap-y-12">
-                    <div class="flex justify-between">
+                <div class="my-5 md:my-5 grid grid-flow-row grid-cols-1 grid-rows-3 md:grid-cols-2 md:grid-rows-2 md:gap-x-6">
+                    <div>
                         <label for="email-name" class="self-center text-gray-500">Name: </label>
-                        <input id="email-name" type="text" class="flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full ml-2 py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-bind="form.first_name" placeholder="John Doe">
+                        <input id="email-name" type="text" class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.name" placeholder="John Doe">
+                        <jet-input-error :message="emailForm.error('name')" class="mt-1" />
                     </div>
-                    <div class="flex justify-between">
+                    <div>
                         <label for="email-email" class="self-center text-gray-500">Email: </label>
-                        <input id="email-email" type="email" class="flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full ml-2 py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-bind="form.email" placeholder="John@Company.com">
+                        <input id="email-email" type="email" class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.email" placeholder="john@company.com">
+                        <jet-input-error :message="emailForm.error('email')" class="mt-1" />
                     </div>
-                    <div class="flex justify-between md:col-span-2">
+                    <div class="md:col-span-2">
                         <label for="email-message" class="self-center text-gray-500">Message: </label>
-                        <textarea id="email-message" class="flex-1 self-center resize-none block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full ml-2 py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400"></textarea>
+                        <textarea id="email-message" class="mt-1 flex-1 self-center resize-none block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.message"></textarea>
+                        <jet-input-error :message="emailForm.error('message')" class="mt-1" />
                     </div>
                 </div>
+                <jet-button class="mt-2" @click.native="sendEmail" :class="{ 'opacity-25': emailForm.processing }" :disabled="emailForm.processing">
+                    Send
+                </jet-button>
             </div>
 
             <div class="m-6 md:m-10 lg:m-16">
@@ -89,19 +95,35 @@
 </template>
 
 <script>
+    import JetButton from './../Jetstream/Button'
+    import JetInputError from './../Jetstream/InputError'
+
     export default {
         components: {
+            JetButton,
+            JetInputError,
         },
+
         data() {
             return {
-                form: this.$inertia.form({
-                    first_name: '',
+                emailForm: this.$inertia.form({
+                    name: '',
                     email: '',
+                    message: '',
                 }, {
                     bag: 'createEmailBag',
                     resetOnSuccess: true,
                 }),
             }
-        }
+        },
+
+        methods: {
+            sendEmail() {
+                this.emailForm.post(route('contact-emails.store'), {
+                    preserveScroll: true,
+                    preserveState: true,
+                }).then(response => {})
+            },
+        },
     }
 </script>

@@ -4,13 +4,20 @@
             <div class="min-w-xs mx-4">
                 <ab-table>
                     <template #thead>
-                        <ab-th>About</ab-th>
+                        <ab-th>Guest</ab-th>
                     </template>
                     <template #tbody>
                         <tr>
                             <ab-td>
                                 <inertia-link :href="route('testimonials.index')">
                                     Testimonials
+                                </inertia-link>
+                            </ab-td>
+                        </tr>
+                        <tr>
+                            <ab-td>
+                                <inertia-link :href="route('contact-emails.index')">
+                                    Contact Emails
                                 </inertia-link>
                             </ab-td>
                         </tr>

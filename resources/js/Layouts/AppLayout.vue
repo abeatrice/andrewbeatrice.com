@@ -42,10 +42,13 @@
 
                                 <template #content>
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        About Resources
+                                        Guest Resources
                                     </div>
                                     <jet-dropdown-link :href="route('testimonials.index')">
                                         Testimonials
+                                    </jet-dropdown-link>
+                                    <jet-dropdown-link :href="route('contact-emails.index')">
+                                        Contact Emails
                                     </jet-dropdown-link>
                                     <div class="border-t border-gray-100"></div>
 

@@ -5,7 +5,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ContactEmailController;
 
+// Pages Routes
 Route::get('/', function() {
     return Inertia::render('About', [
         'testimonials' => App\Models\Testimonial::orderBy('year', 'desc')->get(),
@@ -21,6 +23,9 @@ Route::get('/resume', function() {
     ]);
 })->name('resume');
 
+Route::post('contact-emails', [ContactEmailController::class, 'store'])->name('contact-emails.store');
+
+// Admin Routes
 Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
     Route::get('/', fn() => Inertia::render('Admin'))->name('admin');
     Route::resources([
@@ -28,4 +33,5 @@ Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
         'education' => EducationController::class,
         'experiences' => ExperienceController::class,
     ]);
+    Route::resource('contact-emails', ContactEmailController::class)->except(['store']);
 });
