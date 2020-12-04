@@ -29,4 +29,3 @@ Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
         'experiences' => ExperienceController::class,
     ]);
 });
-
