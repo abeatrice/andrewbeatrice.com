@@ -28,6 +28,7 @@ Route::post('contact-emails', [ContactEmailController::class, 'store'])->name('c
 // Admin Routes
 Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
     Route::get('/', fn() => Inertia::render('Admin'))->name('admin');
+    Route::get('/profile', fn() => Inertia::render('Profile'))->name('profile');
     Route::resources([
         'testimonials' => TestimonialController::class,
         'education' => EducationController::class,
