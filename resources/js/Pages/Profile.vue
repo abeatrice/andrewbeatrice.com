@@ -1,5 +1,8 @@
 <template>
     <app-layout>
+        <transition leave-active-class="transition ease-in duration-500" leave-class="opacity-100" leave-to-class="opacity-0">
+            <div v-show="updateForm.recentlySuccessful" class="absolute top-20 right-10 rounded bg-green-300 px-5 py-2 ">Profile Updated!</div>
+        </transition>
         <div class="max-w-7xl mx-auto py-6 px-6">
             <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-1">
