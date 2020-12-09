@@ -4,11 +4,12 @@
             <div class="py-4 md:py-8 lg:py-16">
                 <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h3 class="max-w-3xl text-2xl leading-8 font-semibold font-display text-gray-900 sm:text-3xl sm:leading-9 lg:max-w-4xl lg:text-4xl lg:leading-10 mx-auto">
-                        Andrew Beatrice
+                        {{profile.name}}
                     </h3>
-                    <p class="mt-1 text-sm">
-                        661-236-7509 | abeatrice.mail@gmail.com
-                    </p>
+                    <div class="flex justify-center mt-1 text-sm">
+                        <p>{{profile.phone}}</p>
+                        <p class="ml-4">{{profile.email}}</p>
+                    </div>
                     <p class="mt-1 text-sm text-gray-500">
                         Full Stack Developer | Laravel | Javascript | Vue.js | MySql
                     </p>
@@ -53,7 +54,7 @@
         components: {
             GuestLayout,
         },
-        props: ['experiences','education'],
+        props: ['profile', 'experiences', 'education'],
         methods: {
             formatDate(date) {
                 if(!date) {

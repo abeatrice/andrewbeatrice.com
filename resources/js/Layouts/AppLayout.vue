@@ -7,7 +7,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <inertia-link :href="route('admin')">
+                            <inertia-link :href="route('about')">
                                 <jet-application-mark class="block h-9 w-auto" />
                             </inertia-link>
                         </div>
@@ -66,7 +66,7 @@
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         User Resources
                                     </div>
-                                    <jet-dropdown-link :href="route('profile')">
+                                    <jet-dropdown-link :href="route('profile.index')">
                                         Profile
                                     </jet-dropdown-link>
                                     <form @submit.prevent="logout">
