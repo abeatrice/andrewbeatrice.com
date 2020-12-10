@@ -1,13 +1,13 @@
 <template>
     <div class="min-h-screen bg-gray-100">
-        <nav class="bg-white border-b border-gray-100">
+        <nav class="bg-white border-b-2 border-red-500">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <inertia-link :href="route('admin')">
+                            <inertia-link :href="route('about')">
                                 <jet-application-mark class="block h-9 w-auto" />
                             </inertia-link>
                         </div>
@@ -42,13 +42,16 @@
 
                                 <template #content>
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        About Resources
+                                        Guest Resources
                                     </div>
                                     <jet-dropdown-link :href="route('testimonials.index')">
                                         Testimonials
                                     </jet-dropdown-link>
-                                    <div class="border-t border-gray-100"></div>
+                                    <jet-dropdown-link :href="route('contact-emails.index')">
+                                        Contact Emails
+                                    </jet-dropdown-link>
 
+                                    <div class="border-t border-gray-100"></div>
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         Resume Resources
                                     </div>
@@ -60,8 +63,12 @@
                                     </jet-dropdown-link>
 
                                     <div class="border-t border-gray-100"></div>
-
-                                    <!-- Authentication -->
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        User Resources
+                                    </div>
+                                    <jet-dropdown-link :href="route('profile.index')">
+                                        Profile
+                                    </jet-dropdown-link>
                                     <form @submit.prevent="logout">
                                         <jet-dropdown-link as="button">
                                             Logout

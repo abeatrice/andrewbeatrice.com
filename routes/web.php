@@ -5,28 +5,28 @@ use Inertia\Inertia;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ContactEmailController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageController;
 
-Route::get('/', function() {
-    return Inertia::render('About', [
-        'testimonials' => App\Models\Testimonial::orderBy('year', 'desc')->get(),
-    ]);
-})->name('about');
+// Pages
+Route::get('/', [PageController::class, 'about'])->name('about');
+Route::get('/projects', [PageController::class, 'projects'])->name('projects');
+Route::get('/resume', [PageController::class, 'resume'])->name('resume');
 
-Route::get('/projects', fn() => Inertia::render('Projects'))->name('projects');
+// Create Contact Email
+Route::post('contact-emails', [ContactEmailController::class, 'store'])->name('contact-emails.store');
 
-Route::get('/resume', function() {
-    return Inertia::render('Resume', [
-        'experiences' => App\Models\Experience::with('bulletPoints')->orderBy('started_on', 'desc')->get(),
-        'education' => App\Models\Education::with('bulletPoints')->orderBy('started_on', 'desc')->get()
-    ]);
-})->name('resume');
-
+// Admin
 Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
     Route::get('/', fn() => Inertia::render('Admin'))->name('admin');
+    
     Route::resources([
+        'profile' => ProfileController::class,
         'testimonials' => TestimonialController::class,
         'education' => EducationController::class,
         'experiences' => ExperienceController::class,
     ]);
+    
+    Route::resource('contact-emails', ContactEmailController::class)->except(['store']);
 });
-
