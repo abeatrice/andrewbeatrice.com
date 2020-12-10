@@ -1,36 +1,58 @@
 <template>
-    <div class="py-8 md:py-12 lg:py-24 bg-gray-900 text-gray-300">
+    <div class="py-8 md:py-12 lg:py-24 bg-gray-900 text-teal-500">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="max-w-3xl text-2xl leading-8 font-semibold font-display sm:text-3xl sm:leading-9 lg:max-w-4xl lg:text-4xl lg:leading-10 lg:mx-auto lg:text-center">
                 Contact Information
             </h3>
-            <p class="text-base leading-6 font-semibold text-teal-500 uppercase tracking-wide lg:text-center">
+            <p class="text-base leading-6 font-semibold uppercase tracking-wide lg:text-center">
                 Lets talk about your next project
             </p>
 
+            <!-- email form -->
             <div class="my-5 mx-auto max-w-2xl">
                 <div class="my-5 md:my-5 grid grid-flow-row grid-cols-1 grid-rows-3 md:grid-cols-2 md:grid-rows-2 md:gap-x-6">
                     <div>
-                        <label for="email-name" class="self-center text-gray-500">Name: </label>
-                        <input id="email-name" type="text" class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.name" placeholder="John Doe">
+                        <label for="email-name" class="self-center">Name: </label>
+                        <input 
+                            id="email-name" 
+                            type="text" 
+                            class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" 
+                            v-model="emailForm.name" 
+                            placeholder="John Doe">
                         <jet-input-error :message="emailForm.error('name')" class="mt-1" />
                     </div>
                     <div>
-                        <label for="email-email" class="self-center text-gray-500">Email: </label>
-                        <input id="email-email" type="email" class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.email" placeholder="john@company.com">
+                        <label for="email-email" class="self-center">Email: </label>
+                        <input 
+                            id="email-email" 
+                            type="email" 
+                            class="mt-1 flex-1 self-center block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" 
+                            v-model="emailForm.email" 
+                            placeholder="john@company.com">
                         <jet-input-error :message="emailForm.error('email')" class="mt-1" />
                     </div>
                     <div class="md:col-span-2">
-                        <label for="email-message" class="self-center text-gray-500">Message: </label>
-                        <textarea id="email-message" class="mt-1 flex-1 self-center resize-none block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400" v-model="emailForm.message"></textarea>
+                        <label for="email-message" class="self-center">Message: </label>
+                        <textarea
+                            id="email-message" 
+                            class="mt-1 flex-1 self-center resize-none block appearance-none placeholder-gray-500 placeholder-opacity-50 border border-gray-700 rounded-md w-full py-3 px-4 bg-gray-800 text-gray-300 leading-5 focus:outline-none focus:ring-2 focus:border-gray-500 focus:ring-gray-400"
+                            v-model="emailForm.message"
+                            placeholder="Hey Andrew, I could use another developer on my team. Let's chat!">
+                        </textarea>
                         <jet-input-error :message="emailForm.error('message')" class="mt-1" />
                     </div>
                 </div>
-                <jet-button class="mt-2" @click.native="sendEmail" :class="{ 'opacity-25': emailForm.processing }" :disabled="emailForm.processing">
-                    Send
-                </jet-button>
+                <div class="mt-2 flex justify-between">
+                    <jet-button class="self-center" @click.native="sendEmail" :class="{ 'opacity-25': emailForm.processing }" :disabled="emailForm.processing">
+                        Send
+                    </jet-button>
+                    <transition leave-active-class="transition ease-in duration-500" leave-class="opacity-100" leave-to-class="opacity-0">
+                        <p class="ml-5 self-center" v-show="emailForm.recentlySuccessful">Thank you for the message, I will be in touch shortly.</p>
+                    </transition>
+                </div>
             </div>
 
+            <!-- social media links -->
             <div class="m-6 md:m-10 lg:m-16">
                 <div class="flex justify-center">
                     <div class="grid grid-flow-row grid-cols-2 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-x-16 gap-y-4 md:gap-x-24 md:gap-y-12">
@@ -97,11 +119,13 @@
 <script>
     import JetButton from './../Jetstream/Button'
     import JetInputError from './../Jetstream/InputError'
+    import AbFlashMessage from './../Ab/FlashMessage'
 
     export default {
         components: {
             JetButton,
             JetInputError,
+            AbFlashMessage,
         },
 
         data() {
